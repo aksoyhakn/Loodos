@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Loodos</string>
+    <string name="network_error_text">İnternet bağlantısı yok. Lütfen bağlantınızı %s  kontrol edin ve yeniden deneyin.</string>
+    <string name="try_again">Tekrar Dene</string>
+    <string name="fetch_failed">Alma başarısız</string>
+    <string name="search_hint">Search</string>
+</resources>

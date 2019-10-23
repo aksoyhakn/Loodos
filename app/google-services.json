@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "415176135095",
+    "firebase_url": "https://loodos-ec64b.firebaseio.com",
+    "project_id": "loodos-ec64b",
+    "storage_bucket": "loodos-ec64b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415176135095:android:e6d35f0a64056ff2769832",
+        "android_client_info": {
+          "package_name": "com.example.loodos"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "415176135095-k703vjnu2uk8k83blobj7k0np27fa260.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.loodos",
+            "certificate_hash": "b2678f66f7d1bd93dd00f6e8d1c0a6385363f521"
+          }
+        },
+        {
+          "client_id": "415176135095-n0b8utabqk9h6g0el2gs5j1kov85npc5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyByh72q5uXAyMtWco9rMTCrpo-TrKVwfzs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "415176135095-n0b8utabqk9h6g0el2gs5j1kov85npc5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
