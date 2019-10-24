@@ -1,4 +1,4 @@
-package com.example.loodos;
+package com.example.loodos.ui.activities;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -13,7 +13,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.example.loodos.ui.activities.MainActivity;
+import com.example.loodos.BuildConfig;
+import com.example.loodos.R;
 import com.example.loodos.utils.CommonUtils;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -22,12 +23,11 @@ import com.google.firebase.remoteconfig.FirebaseRemoteConfigSettings;
 
 public class SplashActivity extends AppCompatActivity {
 
-    private final int SPLASH_DISPLAY_LENGTH = 3000;
+    private final int SPLASH_TIME_OUT = 3000;
 
     private static final String TITLE = "title";
     private static final String COLOR = "background_color";
     private static final String TITLE_COLOR = "title_color";
-
     private FirebaseRemoteConfig mRemoteConfig;
     private LinearLayout llSplashActivity;
     private TextView title;
@@ -35,49 +35,25 @@ public class SplashActivity extends AppCompatActivity {
     private TextView txtNetworkError;
     private Button btntryAgain;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
+        hideSystemUI();
 
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-
             setContentView(R.layout.activity_splash);
-
-            llSplashActivity = findViewById(R.id.ll_SplashActivity);
-            title = findViewById(R.id.txt_loodos);
-
-            mRemoteConfig = FirebaseRemoteConfig.getInstance();
-            FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
-                    .setDeveloperModeEnabled(BuildConfig.DEBUG)
-                    .build();
-
-            mRemoteConfig.setConfigSettings(configSettings);
-            mRemoteConfig.setDefaults(R.xml.remote_config_default);
-
-            fetch();
+            showSplashScreen();
 
         } else {
-
             setContentView(R.layout.activity_splash_network_error);
-
-            txtNetworkError=findViewById(R.id.txt_network_error);
-            txtNetworkError.setText(getString(R.string.network_error_text,"\n"));
-
-            btntryAgain=findViewById(R.id.btn_try_again);
-            btntryAgain.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    startActivity(new Intent(getApplicationContext(), SplashActivity.class));
-                }
-            });
-
+            showNetworkError();
         }
-
 
     }
 
-    private void fetch() {
+    private void fetchFirebase() {
 
         long cacheExpiration = 2000;
 
@@ -106,7 +82,7 @@ public class SplashActivity extends AppCompatActivity {
                                     finish();
                                 }
 
-                                }, SPLASH_DISPLAY_LENGTH);
+                            }, SPLASH_TIME_OUT);
 
 
                         } else {
@@ -115,5 +91,45 @@ public class SplashActivity extends AppCompatActivity {
 
                     }
                 });
+    }
+
+    private void showSplashScreen(){
+
+        llSplashActivity = findViewById(R.id.ll_SplashActivity);
+        title = findViewById(R.id.txt_loodos);
+
+        mRemoteConfig = FirebaseRemoteConfig.getInstance();
+        FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
+                .setDeveloperModeEnabled(BuildConfig.DEBUG)
+                .build();
+
+        mRemoteConfig.setConfigSettings(configSettings);
+        mRemoteConfig.setDefaults(R.xml.remote_config_default);
+
+        fetchFirebase();
+    }
+
+    private void showNetworkError(){
+
+        txtNetworkError = findViewById(R.id.txt_network_error);
+        txtNetworkError.setText(getString(R.string.network_error_text, "\n"));
+
+        btntryAgain = findViewById(R.id.btn_try_again);
+        btntryAgain.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(getApplicationContext(), SplashActivity.class));
+            }
+        });
+    }
+
+    private void hideSystemUI() {
+        getWindow().getDecorView().setSystemUiVisibility(
+                View.SYSTEM_UI_FLAG_LAYOUT_STABLE
+                        | View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                        | View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN
+                        | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION // hide nav bar
+                        | View.SYSTEM_UI_FLAG_FULLSCREEN // hide status bar
+                        | View.SYSTEM_UI_FLAG_IMMERSIVE);
     }
 }

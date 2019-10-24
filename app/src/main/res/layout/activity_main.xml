@@ -2,8 +2,8 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/rl_mainActivity"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ui.activities.MainActivity">
@@ -50,15 +50,35 @@
 
     </androidx.recyclerview.widget.RecyclerView>
 
+    <ImageView
+        android:id="@+id/gif_loading"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true" />
+
     <com.airbnb.lottie.LottieAnimationView
-        android:id="@+id/animation_view"
+        android:id="@+id/anim_search_file"
         android:layout_width="200dp"
+        android:visibility="gone"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
         app:lottie_autoPlay="true"
-        app:lottie_fileName="animation-w350-h350.json"
+        app:lottie_fileName="search_file.json"
         app:lottie_loop="true" />
+
+    <TextView
+        android:id="@+id/txt_not_find"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/anim_search_file"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="@string/not_find"
+        android:textAllCaps="true"
+        android:textColor="@color/not_find_color"
+        android:visibility="gone"></TextView>
 
 
 </RelativeLayout>

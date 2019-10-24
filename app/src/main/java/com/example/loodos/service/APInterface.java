@@ -1,6 +1,6 @@
 package com.example.loodos.service;
 
-import com.example.loodos.pojo.Result;
+import com.example.loodos.model.Result;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

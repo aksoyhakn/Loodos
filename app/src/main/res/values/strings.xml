@@ -4,4 +4,10 @@
     <string name="try_again">Tekrar Dene</string>
     <string name="fetch_failed">Alma başarısız</string>
     <string name="search_hint">Search</string>
+    <string name="login_logout">Uygulamadan çıkış yapmak istiyor musunuz?</string>
+    <string name="ok">Ok</string>
+    <string name="cancel">İptal</string>
+    <string name="not_find">Aradığınız film bulunamadı.</string>
+    <string name="error">Error!</string>
+
 </resources>

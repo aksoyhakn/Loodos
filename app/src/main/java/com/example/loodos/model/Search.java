@@ -1,4 +1,4 @@
-package com.example.loodos.pojo;
+package com.example.loodos.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

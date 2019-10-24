@@ -1,7 +1,7 @@
 package com.example.loodos.ui.adapter;
 
 import android.content.Context;
-import android.util.Log;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,54 +13,58 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.loodos.R;
-import com.example.loodos.pojo.Search;
+import com.example.loodos.model.Search;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class MainAdapter extends RecyclerView.Adapter<MainAdapter.ViewHolder> {
-    private Context context;
-    private ArrayList<Search> searchList;
 
-    public MainAdapter(Context context, ArrayList<Search> searchList) {
-        this.context = context;
-        this.searchList = searchList;
+    private Context mContext;
+    private ArrayList<Search> arrayList;
+
+    public MainAdapter(Context mContext, ArrayList<Search> arrayList) {
+        this.arrayList = arrayList;
+        this.mContext = mContext;
     }
 
     @NonNull
     @Override
-    public MainAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(context).inflate(R.layout.item_movie, parent, false);
+    public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+        View view = LayoutInflater.from(mContext).inflate(R.layout.item_movie, viewGroup, false);
         return new MainAdapter.ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder viewHolder, final int i) {
 
+        Search search = arrayList.get(i);
 
-        final Search search=searchList.get(position);
-        
-        Glide.with(context).load(search.getPoster()).into(holder.movieImage);
-        holder.movieTitle.setText(search.getTitle());
+        Glide.with(mContext).load(search.getPoster()).into(viewHolder.imageView);
+        viewHolder.title.setText(search.getTitle());
+
 
     }
 
     @Override
     public int getItemCount() {
-        return 0;
+        return arrayList.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        public ImageView movieImage;
-        public TextView movieTitle;
+        public TextView title;
+        public ImageView imageView;
 
-        public ViewHolder(@NonNull View itemView) {
-            super(itemView);
+        public ViewHolder(@NonNull View view) {
+            super(view);
 
-            movieImage = itemView.findViewById(R.id.img_movie);
-            movieTitle = itemView.findViewById(R.id.txt_movie_title);
+            title = view.findViewById(R.id.txt_movie_title);
+            imageView = view.findViewById(R.id.img_movie);
 
         }
     }
+
+
 }
+
