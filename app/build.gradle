@@ -33,9 +33,9 @@ ext {
     glideVer = '4.8.0'
     butterknifeVer = '10.2.0'
     retrofitVer = '2.1.0'
-    okhttpVer='4.1.0'
-    lottieVer='2.0.0'
-    simpleSearchVer='0.1.4'
+    okhttpVer = '4.1.0'
+    lottieVer = '2.0.0'
+    simpleSearchVer = '0.1.4'
 }
 
 dependencies {
@@ -54,6 +54,8 @@ dependencies {
 
     //butterknife
     implementation "com.jakewharton:butterknife:$butterknifeVer"
+    implementation 'androidx.appcompat:appcompat:1.0.2'
+    implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
     annotationProcessor "com.jakewharton:butterknife-compiler:$butterknifeVer"
 
     //lottie

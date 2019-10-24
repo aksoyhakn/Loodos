@@ -2,13 +2,13 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="200dp"
     android:orientation="vertical">
 
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         card_view:cardBackgroundColor="@android:color/white"
         card_view:cardCornerRadius="8dp"
         card_view:cardElevation="2dp"
@@ -16,15 +16,18 @@
 
         <LinearLayout
             android:layout_width="match_parent"
+            android:padding="5dp"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
             <ImageView
-                android:id="@+id/img_movie"
+                android:id="@+id/img_movie_poster"
                 android:layout_width="match_parent"
                 android:layout_height="150dp"
+                android:layout_margin="5dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/pslogo" />
+                android:src="@drawable/empty_poster"
+                android:transitionName="example_transition" />
 
             <TextView
                 android:id="@+id/txt_movie_title"
@@ -32,13 +35,12 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
                 android:text="Hakan Aksoy"
-                android:textSize="20dp"></TextView>
+                android:textSize="12dp"></TextView>
 
         </LinearLayout>
 
 
     </androidx.cardview.widget.CardView>
-
 
 
 </LinearLayout>

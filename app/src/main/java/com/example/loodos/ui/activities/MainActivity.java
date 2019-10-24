@@ -3,16 +3,23 @@ package com.example.loodos.ui.activities;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.core.app.ActivityOptionsCompat;
+import androidx.core.view.ViewCompat;
+import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Build;
 import android.os.Bundle;
 import android.text.Html;
+import android.transition.Fade;
+import android.transition.Slide;
+import android.view.Gravity;
 import android.view.KeyEvent;
 import android.view.Menu;
 
@@ -25,17 +32,25 @@ import android.widget.Toast;
 import com.airbnb.lottie.LottieAnimationView;
 import com.bumptech.glide.Glide;
 import com.example.loodos.R;
+import com.example.loodos.model.Details;
+import com.example.loodos.model.Result;
 import com.example.loodos.model.Search;
 import com.example.loodos.presenter.MainPresenter;
+import com.example.loodos.service.APIClient;
+import com.example.loodos.service.APInterface;
 import com.example.loodos.ui.adapter.MainAdapter;
 import com.example.loodos.utils.CommonUtils;
+import com.example.loodos.ınterface.ItemClickListenerImpl;
 import com.example.loodos.ınterface.PresenterImpl;
 import com.example.loodos.ınterface.ViewImpl;
 import com.ferfalk.simplesearchview.SimpleSearchView;
 import com.ferfalk.simplesearchview.utils.DimensUtils;
-import com.google.firebase.remoteconfig.FirebaseRemoteConfig;
 
 import java.util.ArrayList;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl {
 
@@ -133,14 +148,51 @@ public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl
         Toast.makeText(getApplicationContext(), getString(R.string.error), Toast.LENGTH_LONG).show();
     }
 
+
     @Override
     public void showSearchList(ArrayList<Search> searchArrayList) {
 
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getApplicationContext());
-        recyclerView.setLayoutManager(linearLayoutManager);
-        MainAdapter mainAdapter = new MainAdapter(getApplicationContext(), searchArrayList);
+
+        GridLayoutManager mGridLayoutManager = new GridLayoutManager(MainActivity.this, 2);
+        recyclerView.setLayoutManager(mGridLayoutManager);
+        MainAdapter mainAdapter = new MainAdapter(getApplicationContext(), searchArrayList, new ItemClickListenerImpl() {
+            @SuppressLint("NewApi")
+            @Override
+            public void onItemClick(RecyclerView.ViewHolder holder, int position, ImageView imageView) {
+
+                Search search = searchArrayList.get(position);
+                imageView.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+
+                        Intent intent = new Intent(MainActivity.this, DetailActivity.class);
+                        intent.putExtra(DetailActivity.MOVIE_POSTER_URL, search.getPoster());
+                        intent.putExtra(DetailActivity.MOVİE_TITLE, search.getTitle());
+
+                        ActivityOptionsCompat options = ActivityOptionsCompat.
+                                makeSceneTransitionAnimation(MainActivity.this,
+                                        imageView, "example_transition");
+                        startActivity(intent, options.toBundle());
+
+                    }
+                });
+
+
+            }
+        });
         recyclerView.setAdapter(mainAdapter);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            // Respond to the action bar's Up/Home button
+            case android.R.id.home:
+                supportFinishAfterTransition();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @Override

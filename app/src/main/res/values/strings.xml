@@ -10,4 +10,13 @@
     <string name="not_find">Aradığınız film bulunamadı.</string>
     <string name="error">Error!</string>
 
+    <string name="title">Title</string>
+    <string name="year">Year</string>
+    <string name="rated">Rated</string>
+    <string name="released">Released</string>
+    <string name="plot">Plot</string>
+    <string name="director">Director</string>
+    <string name="language">Language</string>
+    <string name="runtime">Runtime</string>
+
 </resources>
