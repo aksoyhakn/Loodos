@@ -60,10 +60,10 @@
     <com.airbnb.lottie.LottieAnimationView
         android:id="@+id/anim_search_file"
         android:layout_width="200dp"
-        android:visibility="gone"
         android:layout_height="200dp"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
+        android:visibility="gone"
         app:lottie_autoPlay="true"
         app:lottie_fileName="search_file.json"
         app:lottie_loop="true" />
@@ -72,13 +72,13 @@
         android:id="@+id/txt_not_find"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="16dp"
         android:layout_below="@id/anim_search_file"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
+        android:visibility="gone"
         android:text="@string/not_find"
-        android:textAllCaps="true"
-        android:textColor="@color/not_find_color"
-        android:visibility="gone"></TextView>
+        android:textColor="@color/not_find_color"></TextView>
 
 
 </RelativeLayout>

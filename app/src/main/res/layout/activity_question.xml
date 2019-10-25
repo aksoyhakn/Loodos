@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="20dp"
+    android:orientation="vertical"
+    tools:context=".ui.activities.QuestionActivity">
+
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:textSize="40dp"
+        android:layout_marginBottom="30dp"
+        android:text="@string/question"></TextView>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="34dp"
+        android:paddingRight="34dp">
+
+        <EditText
+            android:id="@+id/edt_dataValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lütfen 'String' bir ifade girin"></EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="34dp"
+        android:paddingRight="34dp">
+
+        <EditText
+            android:id="@+id/edt_keyValue"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Lütfen 'n' değerini girin."></EditText>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center"
+        android:onClick="showResult"
+        android:textColor="@color/colorWhite"
+        android:background="@drawable/btn_background"
+        android:text="@string/ok"
+        tools:ignore="OnClick"></Button>
+
+
+    <LinearLayout
+        android:id="@+id/ll_questionActivity"
+        android:visibility="gone"
+        android:layout_width="wrap_content"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:orientation="vertical">
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:textStyle="bold"
+            android:layout_gravity="center"
+            android:layout_height="wrap_content"
+            android:text="Sonuç"></TextView>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_marginTop="5dp"
+            android:id="@+id/txt_result"
+            android:layout_height="wrap_content"
+            android:text="Sonuç"></TextView>
+
+    </LinearLayout>
+
+
+</LinearLayout>

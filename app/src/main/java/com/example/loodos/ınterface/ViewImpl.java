@@ -10,6 +10,7 @@ public interface ViewImpl {
 
     interface MainImpl{
 
+        void init();
         void showGIF();
         void hideGIF();
         void emptyGIF();
@@ -20,6 +21,7 @@ public interface ViewImpl {
 
     interface DetailsImpl{
 
+        void init();
         void showMovieDetails(JSONObject movieObject);
         void onError();
 

@@ -1,15 +1,16 @@
 <resources>
     <string name="app_name">Loodos</string>
+    <string name="movie_details">Movie Details</string>
     <string name="network_error_text">İnternet bağlantısı yok. Lütfen bağlantınızı %s  kontrol edin ve yeniden deneyin.</string>
-    <string name="try_again">Tekrar Dene</string>
-    <string name="fetch_failed">Alma başarısız</string>
+    <string name="try_again">Try Again</string>
+    <string name="fetch_failed">Fetch failed</string>
     <string name="search_hint">Search</string>
-    <string name="login_logout">Uygulamadan çıkış yapmak istiyor musunuz?</string>
+    <string name="login_logout">Do you want to logout this application?</string>
     <string name="ok">Ok</string>
-    <string name="cancel">İptal</string>
-    <string name="not_find">Aradığınız film bulunamadı.</string>
+    <string name="question">Question</string>
+    <string name="cancel">Cancel</string>
+    <string name="not_find">Movie Not Found</string>
     <string name="error">Error!</string>
-
     <string name="title">Title</string>
     <string name="year">Year</string>
     <string name="rated">Rated</string>
@@ -18,5 +19,6 @@
     <string name="director">Director</string>
     <string name="language">Language</string>
     <string name="runtime">Runtime</string>
+    <string name="error_value">Please fill this field.</string>
 
 </resources>

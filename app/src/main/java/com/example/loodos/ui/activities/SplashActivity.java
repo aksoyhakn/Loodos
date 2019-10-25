@@ -10,6 +10,7 @@ import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -28,10 +29,11 @@ public class SplashActivity extends AppCompatActivity {
     private static final String TITLE = "title";
     private static final String COLOR = "background_color";
     private static final String TITLE_COLOR = "title_color";
-    private FirebaseRemoteConfig mRemoteConfig;
-    private LinearLayout llSplashActivity;
-    private TextView title;
 
+    private FirebaseRemoteConfig mRemoteConfig;
+    private RelativeLayout rlSplashActivity;
+    private LinearLayout llSplashNetworkError;
+    private TextView title;
     private TextView txtNetworkError;
     private Button btntryAgain;
 
@@ -39,18 +41,33 @@ public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_splash);
 
         hideSystemUI();
+        init();
 
         if (CommonUtils.isNetworkAvailable(getApplicationContext())) {
-            setContentView(R.layout.activity_splash);
+
+            rlSplashActivity.setVisibility(View.VISIBLE);
+            llSplashNetworkError.setVisibility(View.GONE);
             showSplashScreen();
 
         } else {
-            setContentView(R.layout.activity_splash_network_error);
+
+            rlSplashActivity.setVisibility(View.GONE);
+            llSplashNetworkError.setVisibility(View.VISIBLE);
             showNetworkError();
         }
 
+    }
+
+    private void init() {
+
+        llSplashNetworkError = findViewById(R.id.ll_splashNetworkError);
+        rlSplashActivity = findViewById(R.id.ll_SplashActivity);
+        title = findViewById(R.id.txt_loodos);
+        txtNetworkError = findViewById(R.id.txt_network_error);
+        btntryAgain = findViewById(R.id.btn_try_again);
     }
 
     private void fetchFirebase() {
@@ -69,7 +86,7 @@ public class SplashActivity extends AppCompatActivity {
 
                             mRemoteConfig.activateFetched();
 
-                            llSplashActivity.setBackgroundColor(Color.parseColor(mRemoteConfig.getString(COLOR)));
+                            rlSplashActivity.setBackgroundColor(Color.parseColor(mRemoteConfig.getString(COLOR)));
                             title.setTextColor(Color.parseColor(mRemoteConfig.getString(TITLE_COLOR)));
                             title.setText(mRemoteConfig.getString(TITLE));
 
@@ -93,10 +110,7 @@ public class SplashActivity extends AppCompatActivity {
                 });
     }
 
-    private void showSplashScreen(){
-
-        llSplashActivity = findViewById(R.id.ll_SplashActivity);
-        title = findViewById(R.id.txt_loodos);
+    private void showSplashScreen() {
 
         mRemoteConfig = FirebaseRemoteConfig.getInstance();
         FirebaseRemoteConfigSettings configSettings = new FirebaseRemoteConfigSettings.Builder()
@@ -109,12 +123,9 @@ public class SplashActivity extends AppCompatActivity {
         fetchFirebase();
     }
 
-    private void showNetworkError(){
+    private void showNetworkError() {
 
-        txtNetworkError = findViewById(R.id.txt_network_error);
         txtNetworkError.setText(getString(R.string.network_error_text, "\n"));
-
-        btntryAgain = findViewById(R.id.btn_try_again);
         btntryAgain.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

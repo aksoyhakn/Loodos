@@ -69,17 +69,10 @@ public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mainPresenter = new MainPresenter(this);
-
-        toolbar = findViewById(R.id.toolbar);
+        init();
         setSupportActionBar(toolbar);
 
-        lottieAnimationView = findViewById(R.id.anim_search_file);
-        gifLoading = findViewById(R.id.gif_loading);
-        searchView = findViewById(R.id.searchView);
-        recyclerView = findViewById(R.id.rv_mainActivity);
-        txtNotFind = findViewById(R.id.txt_not_find);
-
+        mainPresenter = new MainPresenter(this);
 
         Glide.with(this).load(R.drawable.loodos_loading).into(gifLoading);
 
@@ -117,6 +110,17 @@ public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl
 
     }
 
+
+    @Override
+    public void init() {
+
+        toolbar = findViewById(R.id.toolbar);
+        lottieAnimationView = findViewById(R.id.anim_search_file);
+        gifLoading = findViewById(R.id.gif_loading);
+        searchView = findViewById(R.id.searchView);
+        recyclerView = findViewById(R.id.rv_mainActivity);
+        txtNotFind = findViewById(R.id.txt_not_find);
+    }
 
     @Override
     public void showGIF() {
@@ -170,9 +174,8 @@ public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl
                         intent.putExtra(DetailActivity.MOVIE_POSTER_URL, search.getPoster());
                         intent.putExtra(DetailActivity.MOVİE_TITLE, search.getTitle());
 
-                        ActivityOptionsCompat options = ActivityOptionsCompat.
-                                makeSceneTransitionAnimation(MainActivity.this,
-                                        imageView, "example_transition");
+                        ActivityOptionsCompat options = ActivityOptionsCompat.makeSceneTransitionAnimation(MainActivity.this,
+                                imageView, "example_transition");
                         startActivity(intent, options.toBundle());
 
                     }
@@ -184,16 +187,6 @@ public class MainActivity extends AppCompatActivity implements ViewImpl.MainImpl
         recyclerView.setAdapter(mainAdapter);
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            // Respond to the action bar's Up/Home button
-            case android.R.id.home:
-                supportFinishAfterTransition();
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
