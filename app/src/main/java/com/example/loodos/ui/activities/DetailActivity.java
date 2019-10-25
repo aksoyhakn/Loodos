@@ -29,8 +29,8 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
     public static final String MOVIE_POSTER_URL = "movie_poster_url";
     public static final String MOVİE_TITLE = "movie_title";
 
-    private ImageView imgPoster,imgInfo;
-    private TextView txtMovieTitle, txtMovieYear, txtMovieReleased, txtMovieDirector, txtMoviePlot,txtMovieLanguage,tbMovieTitle,txtMovieRuntime,txtMovieGenre;
+    private ImageView imgPoster, imgInfo;
+    private TextView txtMovieTitle, txtMovieYear, txtMovieReleased, txtMovieDirector, txtMoviePlot, txtMovieLanguage, tbMovieTitle, txtMovieRuntime, txtMovieGenre;
 
     FirebaseAnalytics firebaseAnalytics;
 
@@ -60,7 +60,7 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
         imgInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(),QuestionActivity.class));
+                startActivity(new Intent(getApplicationContext(), QuestionActivity.class));
             }
         });
 
@@ -73,16 +73,16 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
     public void init() {
 
         imgPoster = findViewById(R.id.img_movie_poster);
-        imgInfo=findViewById(R.id.img_info);
+        imgInfo = findViewById(R.id.img_info);
         txtMovieTitle = findViewById(R.id.txt_movie_title);
         txtMovieYear = findViewById(R.id.txt_movie_year);
         txtMovieReleased = findViewById(R.id.txt_movie_released);
         txtMovieDirector = findViewById(R.id.txt_movie_director);
         txtMoviePlot = findViewById(R.id.txt_movie_plot);
         txtMovieLanguage = findViewById(R.id.txt_movie_language);
-        tbMovieTitle=findViewById(R.id.tb_movieTitle);
-        txtMovieRuntime=findViewById(R.id.txt_movie_runtime);
-        txtMovieGenre=findViewById(R.id.txt_movie_genre);
+        tbMovieTitle = findViewById(R.id.tb_movieTitle);
+        txtMovieRuntime = findViewById(R.id.txt_movie_runtime);
+        txtMovieGenre = findViewById(R.id.txt_movie_genre);
     }
 
     @Override
