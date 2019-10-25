@@ -30,7 +30,7 @@
         android:gravity="center"
         android:visibility="gone"
         android:orientation="vertical"
-       >
+        >
 
 
         <com.airbnb.lottie.LottieAnimationView

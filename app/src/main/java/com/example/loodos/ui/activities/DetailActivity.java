@@ -30,7 +30,7 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
     public static final String MOVİE_TITLE = "movie_title";
 
     private ImageView imgPoster,imgInfo;
-    private TextView txtMovieTitle, txtMovieYear, txtMovieReleased, txtMovieDirector, txtMoviePlot,txtMovieLanguage;
+    private TextView txtMovieTitle, txtMovieYear, txtMovieReleased, txtMovieDirector, txtMoviePlot,txtMovieLanguage,tbMovieTitle,txtMovieRuntime,txtMovieGenre;
 
     FirebaseAnalytics firebaseAnalytics;
 
@@ -49,6 +49,7 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
         final String moviePosterURL = getIntent().getStringExtra(MOVIE_POSTER_URL);
         final String movieTitle = getIntent().getStringExtra(MOVİE_TITLE);
 
+        tbMovieTitle.setText(movieTitle);
 
         if (!moviePosterURL.equals("N/A")) {
             Glide.with(this).load(moviePosterURL).into(imgPoster);
@@ -79,6 +80,9 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
         txtMovieDirector = findViewById(R.id.txt_movie_director);
         txtMoviePlot = findViewById(R.id.txt_movie_plot);
         txtMovieLanguage = findViewById(R.id.txt_movie_language);
+        tbMovieTitle=findViewById(R.id.tb_movieTitle);
+        txtMovieRuntime=findViewById(R.id.txt_movie_runtime);
+        txtMovieGenre=findViewById(R.id.txt_movie_genre);
     }
 
     @Override
@@ -104,6 +108,12 @@ public class DetailActivity extends AppCompatActivity implements ViewImpl.Detail
 
             txtMovieLanguage.setText(movieObject.getString("Language"));
             params.putString("movie_language", movieObject.getString("Language"));
+
+            txtMovieRuntime.setText(movieObject.getString("Runtime"));
+            params.putString("movie_runtime", movieObject.getString("Runtime"));
+
+            txtMovieGenre.setText(movieObject.getString("Genre"));
+            params.putString("movie_genre", movieObject.getString("Genre"));
 
             firebaseAnalytics.logEvent("movie_detail", params);
 

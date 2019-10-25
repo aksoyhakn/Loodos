@@ -45,6 +45,7 @@ public class DetailsPresenter implements PresenterImpl.DetailsPresenterImpl {
                     movieDetailObject.put("Plot",response.body().getPlot());
                     movieDetailObject.put("Language",response.body().getLanguage());
                     movieDetailObject.put("Runtime",response.body().getRuntime());
+                    movieDetailObject.put("Genre",response.body().getGenre());
 
                 } catch (JSONException e) {
                     e.printStackTrace();

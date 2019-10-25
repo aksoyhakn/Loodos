@@ -12,9 +12,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:textSize="40dp"
         android:layout_marginBottom="30dp"
-        android:text="@string/question"></TextView>
+        android:text="@string/question"
+        android:textSize="40dp"></TextView>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -26,7 +26,8 @@
             android:id="@+id/edt_dataValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Lütfen 'String' bir ifade girin"></EditText>
+            android:hint="@string/query_data"
+            android:inputType="text"></EditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -40,7 +41,8 @@
             android:id="@+id/edt_keyValue"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Lütfen 'n' değerini girin."></EditText>
+            android:hint="@string/query_key"
+            android:inputType="number"></EditText>
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -48,38 +50,38 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:layout_marginTop="10dp"
         android:layout_gravity="center"
-        android:onClick="showResult"
-        android:textColor="@color/colorWhite"
+        android:layout_marginTop="10dp"
         android:background="@drawable/btn_background"
+        android:onClick="showResult"
         android:text="@string/ok"
+        android:textColor="@color/colorWhite"
         tools:ignore="OnClick"></Button>
 
 
     <LinearLayout
         android:id="@+id/ll_questionActivity"
-        android:visibility="gone"
         android:layout_width="wrap_content"
-        android:gravity="center"
-        android:layout_gravity="center"
         android:layout_height="wrap_content"
+        android:layout_gravity="center"
         android:layout_marginTop="10dp"
-        android:orientation="vertical">
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone">
 
 
         <TextView
             android:layout_width="wrap_content"
-            android:textStyle="bold"
+            android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_height="wrap_content"
-            android:text="Sonuç"></TextView>
+            android:text="@string/results"
+            android:textStyle="bold"></TextView>
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_marginTop="5dp"
             android:id="@+id/txt_result"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
             android:text="Sonuç"></TextView>
 
     </LinearLayout>

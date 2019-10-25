@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -47,7 +48,7 @@ public class QuestionActivity extends AppCompatActivity {
         data = edtDatavalue.getText().toString().trim();
         key = edtKeyValue.getText().toString().trim();
 
-        if (TextUtils.isEmpty(data) && TextUtils.isEmpty(key)) {
+        if (TextUtils.isEmpty(data) || TextUtils.isEmpty(key)) {
 
             if (TextUtils.isEmpty(data)) {
                 edtDatavalue.setError(getString(R.string.error_value));
@@ -60,7 +61,6 @@ public class QuestionActivity extends AppCompatActivity {
             algorithm(data, key);
             CommonUtils.hideSoftKeyboard(QuestionActivity.this);
         }
-
     }
 
     @SuppressLint("NewApi")
