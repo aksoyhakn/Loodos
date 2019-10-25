@@ -11,11 +11,11 @@
         android:roundIcon="@drawable/app_icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".ui.activities.QuestionActivity" />
+        <activity android:name=".ui.activities.SplashScreenActivity" />
         <activity android:name=".ui.activities.DetailActivity" />
         <activity android:name=".ui.activities.MainActivity" />
         <activity
-            android:name=".ui.activities.SplashScreenActivity"
+            android:name=".ui.activities.QuestionActivity"
             android:theme="@style/AppTheme.NoActionBar">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

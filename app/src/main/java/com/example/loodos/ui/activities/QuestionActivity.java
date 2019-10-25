@@ -14,7 +14,13 @@ import android.widget.TextView;
 import com.example.loodos.R;
 import com.example.loodos.utils.CommonUtils;
 
+import org.intellij.lang.annotations.RegExp;
+
 import java.util.Arrays;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+import kotlin.text.Regex;
 
 public class QuestionActivity extends AppCompatActivity {
 
@@ -66,30 +72,14 @@ public class QuestionActivity extends AppCompatActivity {
     @SuppressLint("NewApi")
     private void algorithm(String data, String key) {
 
-        String prevValue;
-        String[] dataArray = data.split("");
 
-        prevValue = dataArray[0];
-
-        for (int i = 1; i < dataArray.length; i++) {
-            if (dataArray[i].equals(prevValue)) {
-                COUNT += 1;
-            } else {
-                COUNT = 1;
-                prevValue = dataArray[i];
-            }
-
-            if (COUNT >= Integer.valueOf(key)) {
-                for (int j = 0; j < COUNT; j++) {
-                    dataArray[i - j] = "*";
-                }
-            }
+        Matcher m = Pattern.compile("(.+)\\1{" + (Integer.valueOf(key) - 1) + ",}").matcher(data);
+        while (m.find()) {
+            data = data.replace(m.group(), m.group().replaceAll("(.)", "*"));
         }
 
-
         llQuestionActivity.setVisibility(View.VISIBLE);
-        txtResult.setText(String.join(" ", dataArray));
-
+        txtResult.setText(data);
         edtDatavalue.setText("");
         edtKeyValue.setText("");
 
