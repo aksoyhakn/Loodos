@@ -78,6 +78,7 @@ public class QuestionActivity extends AppCompatActivity {
             data = data.replace(m.group(), m.group().replaceAll("(.)", "*"));
         }
 
+
         llQuestionActivity.setVisibility(View.VISIBLE);
         txtResult.setText(data);
         edtDatavalue.setText("");
